@@ -4,7 +4,7 @@
 
 | Skill | 适合谁用 | 能做什么 |
 |---|---|---|
-| [`agenthub`](skills/agenthub/SKILL.md) | 所有读者与研究者（零配置，直接联网查） | 查 [AgentHub 日报](https://agent-hub-community.github.io/newspaper/)已发布的每日群聊总结（一群到五群）、自然周周报、外部资讯、资料库（论文／代码／数据集／Benchmark）、招聘与活动机会，以及群聊黑话词典；支持 BM25 + 语义混合搜索，也能帮你在资料库里挑群友分享过的其他 Agent Skill 安装 |
+| [`agenthub`](skills/agenthub/SKILL.md) | 所有读者与研究者（零配置，直接联网查） | 查 [AgentHub 日报](https://agent-hub-community.github.io/newspaper/)已发布的每日群聊总结（一群到五群）、自然周周报（含一群到五群及 AI Safety、Robot、AI4S 垂类专项群）、外部资讯、资料库（论文／代码／数据集／Benchmark）、招聘与活动机会，以及群聊黑话词典；支持 BM25 + 语义混合搜索，也能帮你在资料库里挑群友分享过的其他 Agent Skill 安装 |
 | [`agenthub-daily`](skills/agenthub-daily/SKILL.md) | 日报维护者与自建社群总结的开发者 | 配合 [`bot-workflow`](https://github.com/Agent-Hub-Community/bot-workflow) 和 [`newspaper`](https://github.com/Agent-Hub-Community/newspaper) 两个仓库，从本机微信群聊和外部渠道采集素材、调模型写稿与 AI 锐评、审稿定稿、生成网页预览并发布 |
 
 ---

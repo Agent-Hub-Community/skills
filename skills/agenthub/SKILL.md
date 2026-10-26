@@ -1,11 +1,11 @@
 ---
 name: agenthub
-description: 查询 AgentHub（Agent Hub，讨论 LLM Agent 研究与工程的中文社群，一群到五群）已发布的群聊日报、周报、资料库、招聘／活动机会和群聊黑话词典。当用户问“AgentHub 群里最近在聊什么”“某天或这周群里讨论了什么”“群里有没有聊过或分享过 X”（如 computer use、agentic RL、coding agent、评测基准、某篇论文或某个开源项目）、查群日报里的缩写与模型外号、看社区近期招聘／活动／征稿，或想了解 AgentHub 社群网站与日报工作流时使用。
+description: 查询 AgentHub（Agent Hub，讨论 LLM Agent 研究与工程的中文社群，含一群到五群及 AI Safety、Robot、AI4S 垂类专项群）已发布的群聊日报、周报、资料库、招聘／活动机会和群聊黑话词典。当用户问“AgentHub 群里最近在聊什么”“某天或这周群里讨论了什么”“群里有没有聊过或分享过 X”（如 computer use、agentic RL、coding agent、具身智能、AI 安全、AI4Science、评测基准、某篇论文或某个开源项目）、查群日报里的缩写与模型外号、看社区近期招聘／活动／征稿，或想了解 AgentHub 社群网站与日报工作流时使用。
 ---
 
 # AgentHub 检索与阅读指南
 
-AgentHub 把五个微信群每天的 LLM Agent 研究与工程讨论整理成日报、每周整理成周报，并维护资料库、机会（招聘／活动／征稿）和群聊黑话词典。所有公开接口和导出文件都是现成的 JSON 或 Markdown，无需登录，也不用抓 HTML。
+AgentHub 把一群到五群每天的 LLM Agent 研究与工程讨论整理成日报，每周汇总一群到五群及三个垂类专项群（AI Safety、Robot、AI4S）的讨论生成周报，并维护资料库、机会（招聘／活动／征稿）和群聊黑话词典。所有公开接口和导出文件都是现成的 JSON 或 Markdown，无需登录，也不用抓 HTML。
 
 - 线上日报与资料库：https://agent-hub-community.github.io/newspaper/
 - 社群主页：https://agent-hub-community.github.io/
@@ -14,7 +14,7 @@ AgentHub 把五个微信群每天的 LLM Agent 研究与工程讨论整理成日
 
 ## 怎么查最快
 
-1. 浏览最新一期或某一天聊了什么：先调 https://agenthub-feedback.haoqingeric.workers.dev/content/edition （周报加 ?kind=weekly，指定日期加 ?date=YYYY-MM-DD）拿到各群报头和话题标题清单，再顺着感兴趣的 read_url 读单条或单版 Markdown。
+1. 浏览最新一期或某一天聊了什么：先调 https://agenthub-feedback.haoqingeric.workers.dev/content/edition （周报加 ?kind=weekly，指定日期加 ?date=YYYY-MM-DD）拿到各群报头和话题标题清单，再顺着感兴趣的 read_url 读单条或单版 Markdown。网页端也可直接打开当期总览页（https://agent-hub-community.github.io/newspaper/daily/YYYY-MM-DD/overview/ 或 https://agent-hub-community.github.io/newspaper/weekly/起始日期/结束日期/overview/）一页速览全部版面。
 2. 搜某个技术话题、模型或论文讨论：调 https://agenthub-feedback.haoqingeric.workers.dev/content/search （支持 BM25 + 语义混合检索，自动扩展群内缩写与外号）。
 3. 按类型或方向找论文、开源仓库、benchmark：调 https://agenthub-feedback.haoqingeric.workers.dev/library/search 按 type、topic、keyword 筛选。最近几天刚分享的链接如果还没进每周更新的资料库，用 /content/search 搜日报即可补齐。
 4. 遇到看不懂的缩写、谐音或代号（如 oai、A社、哈基米、RSI）：查 https://agenthub-feedback.haoqingeric.workers.dev/read/glossary/glossary.json
@@ -22,8 +22,8 @@ AgentHub 把五个微信群每天的 LLM Agent 研究与工程讨论整理成日
 ## 回答约定
 
 1. 根据实际查到的内容作答；站内没搜到时直接说明未检索到。
-2. 每条结论附上结果里的网页 url（日报话题形如 https://agent-hub-community.github.io/newspaper/daily/YYYY-MM-DD/group-N/#topic-K，资料形如 https://agent-hub-community.github.io/newspaper/library/#<id>），方便读者点回原页。
-3. 区分群内讨论（一群到五群）和编辑整理的“外部资讯”版面。正文里的“群友”“分享者”是单条话题内的代称，不同话题之间不对应同一个人。
+2. 每条结论附上结果里的网页 url（日报话题形如 https://agent-hub-community.github.io/newspaper/daily/YYYY-MM-DD/group-N/#topic-K，周报话题形如 https://agent-hub-community.github.io/newspaper/weekly/起始日期/结束日期/group-N/#topic-K，资料形如 https://agent-hub-community.github.io/newspaper/library/#<id>），方便读者点回原页。
+3. 区分群内讨论（日报为一群到五群，周报还含 `group-6` AI Safety、`group-7` Robot、`group-8` AI4S）和编辑整理的“外部资讯”版面。正文里的“群友”“分享者”是单条话题内的代称，不同话题之间不对应同一个人。
 
 ## 查询接口
 
@@ -54,7 +54,7 @@ curl -fsSG https://agenthub-feedback.haoqingeric.workers.dev/content/search --da
 
 ### 常用参数
 
-- `/content/search`：`q`（≤120 字）、`kind`（`daily` / `weekly` / `library` / `opportunity`）、`group`（`group-1` 到 `group-5`，或 `external`）、`from` 与 `to`（`YYYY-MM-DD`，含首尾；周报按区间相交匹配）、`limit`（1–20，默认 5）、`offset`。翻页直接请求返回的 `next_url`。
+- `/content/search`：`q`（≤120 字）、`kind`（`daily` / `weekly` / `library` / `opportunity`）、`group`（日报为 `group-1` 到 `group-5`，周报还含专项群 `group-6` AI Safety、`group-7` Robot、`group-8` AI4S，外部资讯为 `external`）、`from` 与 `to`（`YYYY-MM-DD`，含首尾；周报按区间相交匹配）、`limit`（1–20，默认 5）、`offset`。翻页直接请求返回的 `next_url`。
 - `/content/edition`：`kind`（`daily` / `weekly`）、`date`（默认 `latest`；周报填周日结束日期）、`group`。返回各版面的标题、导语和每条话题的 `title` + `read_url`，适合先看目录再挑几条细读。如果某天缺刊，404 响应里的 `nearest.before` 和 `nearest.after` 会给出相邻刊期。
 - `/library/search`：`q`、`type`（`paper` / `benchmark` / `dataset` / `code` / `model` / `tool` / `article` / `video`）、`topic`（如 `coding-agents`、`computer-use`、`training` 等，完整枚举见首页响应的 `available`）、`keyword`（支持别名）。每条资料的 `discussions` 列出引用过该链接的日报或周报话题；为空时可顺着 `discussion_search_url` 按名称搜讨论。
 - 机会（`kind=opportunity`）：返回 `opportunity_kind`（`hiring` / `event` / `cfp`）、`first_shared`（发布日）、`open`（按请求当天北京时间计算的开放状态）和 `closes`（截止日）。回答时优先列 `open: true` 的条目，写清发布日、截止日和官方链接；没有公开链接的内推条目写“联系方式见群里原消息”。
