@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentHub 检索与阅读"
+  short_description: "查询 AgentHub 社群已发布的群聊日报、周报、资料库、招聘与活动机会及群聊黑话词典"
+  default_prompt: "使用 $agenthub 查看最新一期 AgentHub 日报和近期群里重点讨论的话题，每条附上原网页链接。"
