@@ -68,7 +68,7 @@ ln -s "$PWD/skills/skills/agenthub" ~/.claude/skills/agenthub
 
 ## 3. 安装日报生产与编审 Skill（`agenthub-daily`）
 
-如果你要跑一整套群聊采集、调模型写稿、定稿回执和静态站预览，需要先克隆 [`newspaper`](https://github.com/Agent-Hub-Community/newspaper) 与 [`bot-workflow`](https://github.com/Agent-Hub-Community/bot-workflow)，再挂载 `agenthub-daily`：
+如果你要跑一整套群聊采集、调模型写稿、审稿校验和静态站预览，需要先克隆 [`newspaper`](https://github.com/Agent-Hub-Community/newspaper) 与 [`bot-workflow`](https://github.com/Agent-Hub-Community/bot-workflow)，再挂载 `agenthub-daily`：
 
 ```bash
 ln -s "$PWD/skills/skills/agenthub-daily" ~/.claude/skills/agenthub-daily
